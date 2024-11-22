@@ -66,7 +66,7 @@ namespace SAPmyDataService.Modules
         public void StopMyService()
         {
 
-            CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini");
+            CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini");
             string serviceName = ini.IniReadValue("Default", "MYDATA_WINDOWS_SERVICE_NAME");
             //string serviceName = "SAPmyDataServiceExpensesWindowsService";
             if (!string.IsNullOrEmpty(serviceName))
@@ -89,7 +89,7 @@ namespace SAPmyDataService.Modules
                 this.ReadIniFile();
                 Logging.WriteToLog("MyDataTasks.ReadIniFile", Logging.LogStatus.END);
                 int cnt = 0;
-                CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini");
+                CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini");
                 int sleep = int.Parse(ini.IniReadValue("Default", "SLEEP"));
                 while (iResult==0 && cnt < 5) {
                     Logging.WriteToLog("MyDataTasks.ConnectDI", Logging.LogStatus.START);
@@ -153,7 +153,7 @@ namespace SAPmyDataService.Modules
             int iRetVal = 0;
             try
             {
-                CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini");
+                CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini");
 
                 string sCompanyName = ini.IniReadValue("Default", "COMPANY_NAME");
                 string sServerName = ini.IniReadValue("Default", "SAP_SERVER");
@@ -193,7 +193,7 @@ namespace SAPmyDataService.Modules
         {
             try
             {
-                CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini");
+                CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini");
                 this.StopService = int.Parse(ini.IniReadValue("Default", "STOP_SERVICE"));
             }
             catch (Exception ex)
@@ -210,7 +210,7 @@ namespace SAPmyDataService.Modules
                 oMail.Body = _sBody;
                 oMail.Subject = _sSubject;
                 //oMail.SendMail("vplagianos@gmail.com");
-                CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini");
+                CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini");
                 string address = ini.IniReadValue("Default", "EMAIL_ADDRESS");
                 oMail.SendMail(address);
 

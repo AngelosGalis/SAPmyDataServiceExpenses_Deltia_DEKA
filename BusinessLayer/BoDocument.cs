@@ -19,6 +19,7 @@ namespace SAPmyDataService.BusinessLayer
         public string ObjType { get; set; }
         public string DocEntry { get; set; }
         public string DocNum { get; set; }
+        public bool isDelivery { get; set; }
         public string MARK { get; set; }
         public string ClassMark { get; set; }
         public string UID { get; set; }
@@ -43,6 +44,9 @@ namespace SAPmyDataService.BusinessLayer
         public string CounterPart_address_street { get; set; }
         public string CounterPart_address_postalCode { get; set; }
         public string CounterPart_Define_Area { get; set; }
+        public string CounterPart_Number { get; set; }
+
+        public string deliveryVatNumber { get; set; }
 
         public DocumentPrepared DocumentStatus { get; set; }
         public InvoicesDoc AADEDocument { get; set; }

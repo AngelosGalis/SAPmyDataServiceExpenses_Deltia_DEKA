@@ -24,7 +24,7 @@ namespace SAPmyDataService.BusinessLayer
             {
                 int iResult = 0;
                 int cnt = 1;
-                CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini");
+                CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini");
 
                 #region InnovPlanet
                 //var fromAddress = new MailAddress("vplagianos@digital4u.gr", "Donoupoglou Service");

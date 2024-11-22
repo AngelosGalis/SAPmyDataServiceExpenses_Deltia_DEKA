@@ -39,9 +39,9 @@
             // 
             // serviceInstaller1
             // 
-            this.serviceInstaller1.Description = "SAPmyDataServiceExpenses";
-            this.serviceInstaller1.DisplayName = "SAPmyDataServiceExpenses";
-            this.serviceInstaller1.ServiceName = "SAPmyDataServiceExpensesWindowsService";
+            this.serviceInstaller1.Description = "SAPmyDataServiceExpensesDA";
+            this.serviceInstaller1.DisplayName = "SAPmyDataServiceExpensesDA";
+            this.serviceInstaller1.ServiceName = "SAPmyDataServiceExpensesDAWindowsService";
             // 
             // ProjectInstaller
             // 

@@ -49,7 +49,7 @@ namespace SAPmyDataService.DAL
             string sSQL = "";
             try
             {
-                string sFileLocation = "C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini";
+                string sFileLocation = "C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini";
                 CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile(sFileLocation);
                 string sConnectionString = ini.IniReadValue("Default", "MSSQLConnectionString");
                 if (CompanyConnection.DbServerType == SAPbobsCOM.BoDataServerTypes.dst_HANADB)
@@ -103,7 +103,7 @@ namespace SAPmyDataService.DAL
             int iResult = 0;
             try
             {
-                string sFileLocation = "C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini";
+                string sFileLocation = "C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini";
                 CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile(sFileLocation);
                 string error_dscr = "";
                 if (!string.IsNullOrEmpty(ErrorDescr))
@@ -188,7 +188,7 @@ namespace SAPmyDataService.DAL
             string sSQL = "";
             try
             {
-                string sFileLocation = "C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini";
+                string sFileLocation = "C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini";
                 CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile(sFileLocation);
                 if (CompanyConnection.DbServerType == SAPbobsCOM.BoDataServerTypes.dst_HANADB)
                 {
@@ -271,7 +271,7 @@ namespace SAPmyDataService.DAL
                         sSQL = "[dbo].DOCUMENTS_UPDATE_SET_IGNORE";
                     }
 
-                    string sFileLocation = "C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini";
+                    string sFileLocation = "C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini";
                     CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile(sFileLocation);
 
                     string sConnectionString = ini.IniReadValue("Default", "MSSQLConnectionString");

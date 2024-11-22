@@ -94,7 +94,7 @@ namespace SAPmyDataService.BusinessLayer
             int iRetVal = 0;
             try
             {
-                CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini");
+                CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini");
                 int updateMark = int.Parse(ini.IniReadValue("Default", "UPDATE_MARK").ToString());
                 for (int i = 0; i < this.ListDocuments.Count; i++)
                 {
@@ -358,7 +358,7 @@ namespace SAPmyDataService.BusinessLayer
             int iRetVal = 0;
             try
             {
-                string sFileLocation = "C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini";
+                string sFileLocation = "C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini";
                 CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile(sFileLocation);
                 string xmlPath = ini.IniReadValue("Default", "XML_PATH");
                 string sProxy = ini.IniReadValue("Default", "PROXY_SERVER");
@@ -513,7 +513,7 @@ namespace SAPmyDataService.BusinessLayer
             int iRetVal = 0;
             try
             {
-                string sFileLocation = "C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini";
+                string sFileLocation = "C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini";
                 CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile(sFileLocation);
                 string sProxy = ini.IniReadValue("Default", "PROXY_SERVER");
                 string xmlPath = ini.IniReadValue("Default", "XML_PATH");
@@ -843,7 +843,7 @@ namespace SAPmyDataService.BusinessLayer
                         oDocument.reject_deviation = oRS.Fields.Item("REJECT_DEVIATION").Value.ToString();
                         oDocument.MARK = oRS.Fields.Item("MARK").Value.ToString();
                         oDocument.useNewMethod = int.Parse(oRS.Fields.Item("useNewMethod").Value.ToString());
-                        oDocument.CounterPart_vatNumber= oRS.Fields.Item("LICTRADNUM").Value.ToString();
+                        oDocument.CounterPart_vatNumber = oRS.Fields.Item("LICTRADNUM").Value.ToString();
                         oDocument.LoadTotals(this.CompanyConnection);
                         oDocument.DefineType();
                         this.ListDocuments.Add(oDocument);
@@ -945,7 +945,7 @@ namespace SAPmyDataService.BusinessLayer
                     else if (_oDocument.DocumentType == Enumerators.DocumentType.p_Reject) //reject
                     {
 
-                        CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini");
+                        CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini");
                         string LicTradNum = ini.IniReadValue("Default", "ISSUER_VAT_ID").ToString();
                         _oDocument.AADEMatchingDocument = new ExpensesClassificationsDoc();
                         _oDocument.AADEMatchingDocument.expensesInvoiceClassification = new List<InvoiceExpensesClassificationType>();
@@ -956,13 +956,13 @@ namespace SAPmyDataService.BusinessLayer
 
                         _oDocument.AADEMatchingDocument.expensesInvoiceClassification.Add(invoiceExpensesClassificationType);
                         _oDocument.DocumentStatus = DocumentPrepared.p_Success;
-                        
+
                         iRetVal++;
-                       
+
                     }
                     else if (_oDocument.DocumentType == Enumerators.DocumentType.p_Deviation) //deviation
                     {
-                        CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini");
+                        CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini");
                         string LicTradNum = ini.IniReadValue("Default", "ISSUER_VAT_ID").ToString();
                         _oDocument.AADEMatchingDocument = new ExpensesClassificationsDoc();
                         _oDocument.AADEMatchingDocument.expensesInvoiceClassification = new List<InvoiceExpensesClassificationType>();
@@ -993,7 +993,7 @@ namespace SAPmyDataService.BusinessLayer
                         }
                         else if (_oDocument.ObjType.Equals("13") || _oDocument.ObjType.Equals("14"))
                         {
-                             iRes = this.MatchIncome(ref _oDocument, ref oInvoiceType);
+                            iRes = this.MatchIncome(ref _oDocument, ref oInvoiceType);
                         }
 
                         if (iRes == 1)
@@ -1022,7 +1022,7 @@ namespace SAPmyDataService.BusinessLayer
                     _oDocument.AADEMatchingDocument = new ExpensesClassificationsDoc();
                     InvoiceExpensesClassificationType invoiceExpensesClassificationType = new InvoiceExpensesClassificationType();
                     invoiceExpensesClassificationType.invoiceMark = _oDocument.MARK;
-                    string sFileLocation = "C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini";
+                    string sFileLocation = "C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini";
                     CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile(sFileLocation);
                     string vat = ini.IniReadValue("Default", "ISSUER_VAT_ID");
                     invoiceExpensesClassificationType.entityVatNumber = vat;
@@ -1220,7 +1220,7 @@ namespace SAPmyDataService.BusinessLayer
                     _oDocument.AADEMatchingDocumentIncome = new IncomeClassificationsDoc();
                     InvoiceIncomeClassificationType invoiceIncomeClassificationType = new InvoiceIncomeClassificationType();
                     invoiceIncomeClassificationType.invoiceMark = long.Parse(_oDocument.MARK);
-                    string sFileLocation = "C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini";
+                    string sFileLocation = "C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini";
                     CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile(sFileLocation);
                     string vat = ini.IniReadValue("Default", "ISSUER_VAT_ID");
                     invoiceIncomeClassificationType.entityVatNumber = vat;
@@ -1320,7 +1320,7 @@ namespace SAPmyDataService.BusinessLayer
                     oInvoiceType.invoiceHeader = this.GetInvoiceHeader(ref _oDocument, out iTempHeader);
 
 
-                    CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini");
+                    CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini");
 
 
                     string sPaymentMethods = ini.IniReadValue("Default", "PAYMENT_METHODS");
@@ -1335,7 +1335,7 @@ namespace SAPmyDataService.BusinessLayer
 
                     if ((_oDocument.ObjType != "30" && _oDocument.ObjType != "31") || ((_oDocument.ObjType == "30" || _oDocument.ObjType == "31") && ListJEPaymentMethods.Contains(oInvoiceType.invoiceHeader.invoiceType.ToString()) == true))
                     {
-                        if (_oDocument.DocumentType == Enumerators.DocumentType.p_Income || (_oDocument.DocumentType == Enumerators.DocumentType.p_EU_TX && ListNoPaymentMethods.Contains(oInvoiceType.invoiceHeader.invoiceType.ToString()) == false))
+                        if ((_oDocument.DocumentType == Enumerators.DocumentType.p_Income && !_oDocument.ObjType.Equals("15"))|| (_oDocument.DocumentType == Enumerators.DocumentType.p_EU_TX && ListNoPaymentMethods.Contains(oInvoiceType.invoiceHeader.invoiceType.ToString()) == false))
                         {
                             oInvoiceType.paymentMethods = new List<PaymentMethodDetailType>();
                             oInvoiceType.paymentMethods = this.GetPaymentMethods(_oDocument, out iTempPayment);
@@ -1391,6 +1391,17 @@ namespace SAPmyDataService.BusinessLayer
 
                     oInvoiceType.invoiceSummary = new InvoiceSummaryType();
                     oInvoiceType.invoiceSummary = this.GetInvoiceSummary(_oDocument, out iTempDocumentSummary);
+
+                    #region Delivery Notes
+                    if (_oDocument.isDelivery == true)
+                    {
+                        oInvoiceType.otherTransportDetails = new otherTransportDetailsType();
+                        oInvoiceType.otherTransportDetails.vehicleNumber = oInvoiceType.invoiceHeader.vehicleNumber;
+                    }
+
+
+
+                    #endregion
 
                     _oDocument.AADEDocument.invoice.Add(oInvoiceType);
 
@@ -1462,27 +1473,37 @@ namespace SAPmyDataService.BusinessLayer
                         _oDocument.isExpense = int.Parse(oRS.Fields.Item("IsExpense").Value.ToString());
                         if (_oDocument.isExpense == 0)
                         {
-                            oIncomeClassificationType = new IncomeClassificationType();
-                            decimal amount = decimal.Parse(Math.Round((double.Parse(oRS.Fields.Item("ClassificationTypeAmount").Value.ToString())), 2).ToString("0.00"));
-                            oIncomeClassificationType.amount = decimal.Round(amount, 2).ToString("0.00").Replace(",", ".");
+                            CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini");
+                            string sNoClassRecType = ini.IniReadValue("Default", "NO_CLASSIFICATION_RECTYPE");
+                            List<string> ListNoClassRecType = new List<string>();
+                            ListNoClassRecType = sNoClassRecType.Split(',').ToList();
 
-                            oIncomeClassificationType.classificationCategory = (IncomeClassificationCategoryType)Enum.Parse(typeof(IncomeClassificationCategoryType), oRS.Fields.Item("classificationCategory").Value.ToString());
-                            string classificationType = oRS.Fields.Item("classificationType").Value.ToString();
-                            if (!string.IsNullOrEmpty(classificationType) && !classificationType.Equals("-112") && oIncomeClassificationType.classificationCategory != IncomeClassificationCategoryType.category1_95)
+                            string sNoClassDelivery = ini.IniReadValue("Default", "NO_CLASSIFICATION_DELIVERY");
+                            List<string> ListNoClassDelivery = new List<string>();
+                            ListNoClassDelivery = sNoClassDelivery.Split(',').ToList();
+
+                            if (ListNoClassRecType.Contains(invoiceType) == false && ListNoClassDelivery.Contains(invoiceType) == false)
                             {
-                                oIncomeClassificationType.classificationType = (IncomeClassificationValueType)Enum.Parse(typeof(IncomeClassificationValueType), classificationType);
-                                oIncomeClassificationType.classificationTypeSpecified = true;
 
+                                oIncomeClassificationType = new IncomeClassificationType();
+                                decimal amount = decimal.Parse(Math.Round((double.Parse(oRS.Fields.Item("ClassificationTypeAmount").Value.ToString())), 2).ToString("0.00"));
+                                oIncomeClassificationType.amount = decimal.Round(amount, 2).ToString("0.00").Replace(",", ".");
+                                oIncomeClassificationType.classificationCategory = (IncomeClassificationCategoryType)Enum.Parse(typeof(IncomeClassificationCategoryType), oRS.Fields.Item("classificationCategory").Value.ToString());
+                                string classificationType = oRS.Fields.Item("classificationType").Value.ToString();
+                                if (!string.IsNullOrEmpty(classificationType) && !classificationType.Equals("-112") && oIncomeClassificationType.classificationCategory != IncomeClassificationCategoryType.category1_95)
+                                {
+                                    oIncomeClassificationType.classificationType = (IncomeClassificationValueType)Enum.Parse(typeof(IncomeClassificationValueType), classificationType);
+                                    oIncomeClassificationType.classificationTypeSpecified = true;
+                                }
+                                else
+                                {
+                                    oIncomeClassificationType.classificationTypeSpecified = false;
+                                }
+                                oIncomeClassificationType.idSpecified = false;
+                                oIncomeClassificationType.classificationCategorySpecified = true;
+                                oRow.incomeClassification = new List<IncomeClassificationType>();
+                                oRow.incomeClassification.Add(oIncomeClassificationType);
                             }
-                            else
-                            {
-                                oIncomeClassificationType.classificationTypeSpecified = false;
-                            }
-                            oIncomeClassificationType.idSpecified = false;
-                            oIncomeClassificationType.classificationCategorySpecified = true;
-
-                            oRow.incomeClassification = new List<IncomeClassificationType>();
-                            oRow.incomeClassification.Add(oIncomeClassificationType);
                         }
                         else
                         {
@@ -1505,10 +1526,8 @@ namespace SAPmyDataService.BusinessLayer
                             oExpensesClassificationType.classificationCategorySpecified = true;
                             oExpensesClassificationType.idSpecified = true;
                             oExpensesClassificationType.id = 1;
-
                             oRow.expensesClassification.Add(oExpensesClassificationType);
-
-                            string sFileLocation = "C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini";
+                            string sFileLocation = "C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini";
                             CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile(sFileLocation);
 
                             string sNoVATCategories = ini.IniReadValue("Default", "NO_VAT_CATEGORIES");
@@ -1521,7 +1540,6 @@ namespace SAPmyDataService.BusinessLayer
 
                             if ((!_oDocument.ObjType.Equals("30") && !_oDocument.ObjType.Equals("31")) /*&& !_oDocument.ObjType.Equals("444")*/ && ListNoVATCat.Contains(oExpensesClassificationType.classificationCategory.ToString()) == false && ListNoVATType.Contains(invoiceType) == false)
                             {
-
                                 oExpensesClassificationType = new ExpensesClassificationType();
                                 //oExpensesClassificationType.amount = Math.Round((double.Parse(oRS.Fields.Item("vatAmount").Value.ToString())), 2);
                                 amount = decimal.Parse(Math.Round((double.Parse(oRS.Fields.Item("ClassificationTypeAmount").Value.ToString())), 2).ToString("0.00"));
@@ -1716,6 +1734,37 @@ namespace SAPmyDataService.BusinessLayer
                             oRow.recTypeSpecified = true;
                             oRow.recType = int.Parse(oRS.Fields.Item("recType").Value.ToString());
                         }
+                        #endregion
+
+                        #region Delivery Note
+                        if (_oDocument.isDelivery == true)
+                        {
+                            if (string.IsNullOrEmpty(oRS.Fields.Item("itemCode").Value.ToString()) || oRS.Fields.Item("itemCode").Value.ToString().Equals("-112"))
+                            {
+                                oRow.itemCodeSpecified = false;
+                            }
+                            else
+                            {
+                                oRow.itemCodeSpecified = true;
+                                oRow.itemCode = oRS.Fields.Item("itemCode").Value.ToString();
+                            }
+                        }
+
+                        if (string.IsNullOrEmpty(oRS.Fields.Item("itemDescr").Value.ToString()) || oRS.Fields.Item("itemDescr").Value.ToString().Equals("-112"))
+                        {
+                            oRow.itemDescrSpecified = false;
+                        }
+                        else
+                        {
+                            oRow.itemDescrSpecified = true;
+                            oRow.itemDescr = oRS.Fields.Item("itemDescr").Value.ToString();
+                        }
+
+                        if (!_oDocument.ObjType.Equals("13") && !_oDocument.ObjType.Equals("14"))
+                        {
+                            oRow.netValue = 0;
+                            oRow.vatAmount = 0;
+                        }
 
                         #endregion
                         //oRow.expensesClassification = null;
@@ -1802,7 +1851,14 @@ namespace SAPmyDataService.BusinessLayer
                         IncomeClassificationType oIncomeClassificationType = null;
                         _oIncomeClassification = new List<IncomeClassificationType>();
 
+                        CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini");
+                        string sNoClassRecType = ini.IniReadValue("Default", "NO_CLASSIFICATION_RECTYPE");
+                        List<string> ListNoClassRecType = new List<string>();
+                        ListNoClassRecType = sNoClassRecType.Split(',').ToList();
 
+                        string sNoClassDelivery = ini.IniReadValue("Default", "NO_CLASSIFICATION_DELIVERY");
+                        List<string> ListNoClassDelivery = new List<string>();
+                        ListNoClassDelivery = sNoClassDelivery.Split(',').ToList();
 
                         if (this.CompanyConnection.DbServerType == SAPbobsCOM.BoDataServerTypes.dst_HANADB)
                         {
@@ -1818,27 +1874,30 @@ namespace SAPmyDataService.BusinessLayer
                         while (oRS.EoF == false)
                         {
                             dTotal += double.Parse(oRS.Fields.Item("Amount").Value.ToString());
-                            oIncomeClassificationType = new IncomeClassificationType();
-                            //oIncomeClassificationType.amount = double.Parse(oRS.Fields.Item("Amount").Value.ToString());
-                            decimal amount = decimal.Parse(Math.Round((double.Parse(oRS.Fields.Item("Amount").Value.ToString())), 2).ToString("0.00"));
-                            oIncomeClassificationType.amount = decimal.Round(amount, 2).ToString("0.00").Replace(",", ".");
-                            oIncomeClassificationType.classificationCategory = (IncomeClassificationCategoryType)Enum.Parse(typeof(IncomeClassificationCategoryType), oRS.Fields.Item("classificationCategory").Value.ToString());
-                            string classificationType = oRS.Fields.Item("classificationType").Value.ToString();
-                            if (!string.IsNullOrEmpty(classificationType) && !classificationType.Equals("-112"))
+
+                            if (ListNoClassRecType.Contains(_oDocument.invoiceType) == false && ListNoClassDelivery.Contains(_oDocument.invoiceType) == false)
                             {
-                                oIncomeClassificationType.classificationType = (IncomeClassificationValueType)Enum.Parse(typeof(IncomeClassificationValueType), classificationType);
-                                oIncomeClassificationType.classificationTypeSpecified = true;
+                                oIncomeClassificationType = new IncomeClassificationType();
+                                //oIncomeClassificationType.amount = double.Parse(oRS.Fields.Item("Amount").Value.ToString());
+                                decimal amount = decimal.Parse(Math.Round((double.Parse(oRS.Fields.Item("Amount").Value.ToString())), 2).ToString("0.00"));
+                                oIncomeClassificationType.amount = decimal.Round(amount, 2).ToString("0.00").Replace(",", ".");
+                                oIncomeClassificationType.classificationCategory = (IncomeClassificationCategoryType)Enum.Parse(typeof(IncomeClassificationCategoryType), oRS.Fields.Item("classificationCategory").Value.ToString());
+                                string classificationType = oRS.Fields.Item("classificationType").Value.ToString();
+                                if (!string.IsNullOrEmpty(classificationType) && !classificationType.Equals("-112"))
+                                {
+                                    oIncomeClassificationType.classificationType = (IncomeClassificationValueType)Enum.Parse(typeof(IncomeClassificationValueType), classificationType);
+                                    oIncomeClassificationType.classificationTypeSpecified = true;
 
+                                }
+                                else
+                                {
+                                    oIncomeClassificationType.classificationTypeSpecified = false;
+                                }
+                                oIncomeClassificationType.idSpecified = false;
+                                oIncomeClassificationType.classificationCategorySpecified = true;
+
+                                _oIncomeClassification.Add(oIncomeClassificationType);
                             }
-                            else
-                            {
-                                oIncomeClassificationType.classificationTypeSpecified = false;
-                            }
-                            oIncomeClassificationType.idSpecified = false;
-                            oIncomeClassificationType.classificationCategorySpecified = true;
-
-                            _oIncomeClassification.Add(oIncomeClassificationType);
-
                             oRS.MoveNext();
                         }
                         iRetVal++;
@@ -2038,25 +2097,31 @@ namespace SAPmyDataService.BusinessLayer
                     //***NOTE*** ALL FIELDS ARE REQUIRED!!!!
                     if (_oDocument.isExpense == 0)
                     {
-                        #region commented
-                        //oRet.totalDeductionsAmount = 0.00;
-                        //oRet.totalFeesAmount = 0.00;
-                        //oRet.totalGrossValue = dTotal + _oDocument.TotalVATAmount;//Net + taxes (Το Taxes περιλαμβάνει όλους τους επιπλέον φόρους βλ. View Φόρων)
-                        //oRet.totalGrossValue = Math.Round((dTotal + _oDocument.TotalVATAmount), 2);//Net + taxes (Το Taxes περιλαμβάνει όλους τους επιπλέον φόρους βλ. View Φόρων)
-                        //oRet.totalNetValue = dTotal;
-                        //oRet.totalOtherTaxesAmount = 0.00;
-                        //oRet.totalStampDutyAmount = 0.00;
-                        //oRet.totalWithheldAmount = 0.00;
+                        #region Delivery Notes
+                        if (_oDocument.isDelivery == true && !_oDocument.ObjType.Equals("13") && !_oDocument.ObjType.Equals("14"))
+                        {
+                            oRet.totalDeductionsAmount = 0.00;
+                            oRet.totalFeesAmount = 0.00;
+                            oRet.totalGrossValue = 0.00;
+                            oRet.totalGrossValue = 0.00;
+                            oRet.totalNetValue = 0.00;
+                            oRet.totalOtherTaxesAmount = 0.00;
+                            oRet.totalStampDutyAmount = 0.00;
+                            oRet.totalWithheldAmount = 0.00;
+                        }
                         #endregion
-                        oRet.totalDeductionsAmount = Math.Round(dTotalDeductions, 2);
-                        oRet.totalFeesAmount = Math.Round(dTotalFees, 2);
-                        oRet.totalNetValue = Math.Round(dTotal, 2);
-                        oRet.totalOtherTaxesAmount = Math.Round(dTotalOtherTaxes, 2);
-                        oRet.totalStampDutyAmount = Math.Round(dTotalStamp, 2);
-                        oRet.totalVatAmount = Math.Round((_oDocument.TotalVATAmount), 2);
-                        oRet.totalWithheldAmount = Math.Round(dTotalWithheldTaxes, 2);
-                        oRet.expensesClassification = null;
-                        oRet.totalGrossValue = Math.Round((dTotal + _oDocument.TotalVATAmount - dTotalDeductions - dTotalFees + dTotalStamp - dTotalOtherTaxes - dTotalWithheldTaxes), 2);//Net + taxes (Το Taxes περιλαμβάνει όλους τους επιπλέον φόρους βλ. View Φόρων)
+                        else
+                        {
+                            oRet.totalDeductionsAmount = Math.Round(dTotalDeductions, 2);
+                            oRet.totalFeesAmount = Math.Round(dTotalFees, 2);
+                            oRet.totalNetValue = Math.Round(dTotal, 2);
+                            oRet.totalOtherTaxesAmount = Math.Round(dTotalOtherTaxes, 2);
+                            oRet.totalStampDutyAmount = Math.Round(dTotalStamp, 2);
+                            oRet.totalVatAmount = Math.Round((_oDocument.TotalVATAmount), 2);
+                            oRet.totalWithheldAmount = Math.Round(dTotalWithheldTaxes, 2);
+                            oRet.expensesClassification = null;
+                            oRet.totalGrossValue = Math.Round((dTotal + _oDocument.TotalVATAmount - dTotalDeductions - dTotalFees + dTotalStamp - dTotalOtherTaxes - dTotalWithheldTaxes), 2);//Net + taxes (Το Taxes περιλαμβάνει όλους τους επιπλέον φόρους βλ. View Φόρων)
+                        }
                     }
                     else
                     {
@@ -2103,11 +2168,10 @@ namespace SAPmyDataService.BusinessLayer
                 string sSQL = "";
                 PartyType oRet = null;
 
-                CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini");
+                CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini");
                 string sCounterPart = ini.IniReadValue("Default", "EU_TX_COUNTER_ADDRESS");
                 List<string> ListCounterpart = new List<string>();
                 ListCounterpart = sCounterPart.Split(',').ToList();
-
 
                 try
                 {
@@ -2128,8 +2192,14 @@ namespace SAPmyDataService.BusinessLayer
                     oRet.country = (CountryType)Enum.Parse(typeof(CountryType), oRS.Fields.Item("Country").Value.ToString());
                     oRet.branch = int.Parse(oRS.Fields.Item("Branch").Value.ToString());
                     oRet.vatNumber = oRS.Fields.Item("TaxIdNum").Value.ToString();
+                    if (_oDocument.isDelivery == true)
+                    {
+                        oRet.name= oRS.Fields.Item("IssuerName").Value.ToString();
+                    }
 
-                    if ((_oDocument.ObjType.Equals("19") || _oDocument.ObjType.Equals("18")) && ListCounterpart.Contains(_oDocument.invoiceType) == true)
+                    if (((_oDocument.ObjType.Equals("19") || _oDocument.ObjType.Equals("18")) && ListCounterpart.Contains(_oDocument.invoiceType) == true)
+                        || _oDocument.isDelivery == true
+                        )
                     {
                         oRet.address = new AddressType();
                         oRet.address.postalCode = oRS.Fields.Item("ZipCode").Value.ToString();
@@ -2159,12 +2229,27 @@ namespace SAPmyDataService.BusinessLayer
                 PartyType oRet = null;
                 try
                 {
-                    CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini");
+                    CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile("C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini");
                     string sNoCounterPart = ini.IniReadValue("Default", "NO_COUNTERPART");
                     List<string> ListNoCounterpart = new List<string>();
                     ListNoCounterpart = sNoCounterPart.Split(',').ToList();
+                    if (_oDocument.isDelivery == true)
+                    {
+                        oRet = new PartyType();
+                        oRet.name = _oDocument.CounterPart_name;
+                        oRet.country = (CountryType)Enum.Parse(typeof(CountryType), _oDocument.CounterPart_country);
+                        oRet.vatNumber = _oDocument.CounterPart_vatNumber;
+                        oRet.branch = int.Parse(_oDocument.CounterPart_branch);
+                        oRet.address = new AddressType();
+                        oRet.address.city = _oDocument.CounterPart_country;
+                        oRet.address.street = _oDocument.CounterPart_address_street;
+                        oRet.address.postalCode = _oDocument.CounterPart_address_postalCode;
+                        oRet.address.number = _oDocument.CounterPart_Number;
 
-                    if (ListNoCounterpart.Contains(_oInvoiceType.ToString()) == false)
+                        _iResult++;
+
+                    }
+                    else if (ListNoCounterpart.Contains(_oInvoiceType.ToString()) == false)
                     {
                         oRet = new PartyType();
                         switch (_oDocument.CounterPart_Define_Area)
@@ -2297,7 +2382,7 @@ namespace SAPmyDataService.BusinessLayer
                 {
                     DateTime dtRefDate = DateTime.Now;
 
-                    string sFileLocation = "C:\\Program Files\\SAP\\SAPmyDataService\\ConfParams.ini";
+                    string sFileLocation = "C:\\Program Files\\SAP\\SAPmyDataServiceDA\\ConfParams.ini";
                     CommonLibrary.Ini.IniFile ini = new CommonLibrary.Ini.IniFile(sFileLocation);
 
                     //ΠΡΕΠΕΙ ΝΑ ΣΚΕΦΤΩ ΚΑΤΙ ΔΗΜΙΟΥΡΓΙΚΟ ΓΙΑ ΝΑ ΣΥΝΔΕΟΜΑΙ ΣΕ ΔΙΑΦΟΡΕΤΙΚΗ ΒΑΣΗ ΑΝΑΛΟΓΑ ΜΕ ΤΟ DBNAME (HANA EDITION)
@@ -2326,6 +2411,7 @@ namespace SAPmyDataService.BusinessLayer
                         _oDocument.CounterPart_name = oRS.Fields.Item("CounterPart_name").Value.ToString();
                         _oDocument.CounterPart_vatNumber = oRS.Fields.Item("CounterPart_vatNumber").Value.ToString();
                         _oDocument.CounterPart_Define_Area = oRS.Fields.Item("CounterPart_Define_Area").Value.ToString();
+                        _oDocument.CounterPart_Number = oRS.Fields.Item("CounterPart_address_Number").Value.ToString();
 
                         #endregion
 
@@ -2343,6 +2429,29 @@ namespace SAPmyDataService.BusinessLayer
                         #endregion
 
                         #region NotRequired
+                        _oDocument.deliveryVatNumber = oRS.Fields.Item("deliveryVatNumber").Value.ToString();
+                        if (!_oDocument.CounterPart_vatNumber.Equals(_oDocument.deliveryVatNumber) && !_oDocument.CounterPart_vatNumber.Equals("000000000"))
+                        {
+                            oRet.otherCorrelatedEntitiesSpecified = true;
+                            oRet.otherCorrelatedEntities = new EntityType();
+                            oRet.otherCorrelatedEntities.type = int.Parse(oRS.Fields.Item("deliveryTypeCode").Value.ToString());
+                            oRet.otherCorrelatedEntities.entityData = new PartyType();
+                            oRet.otherCorrelatedEntities.entityData.vatNumber = _oDocument.deliveryVatNumber;
+                            oRet.otherCorrelatedEntities.entityData.name = oRS.Fields.Item("deliveryName").Value.ToString();
+                            oRet.otherCorrelatedEntities.entityData.country = (CountryType)Enum.Parse(typeof(CountryType), oRS.Fields.Item("deliveryCountry").Value.ToString());
+                            oRet.otherCorrelatedEntities.entityData.branch = int.Parse(oRS.Fields.Item("deliveryBranch").Value.ToString());
+                            oRet.otherCorrelatedEntities.entityData.address = new AddressType();
+                            oRet.otherCorrelatedEntities.entityData.address.street = oRS.Fields.Item("deliveryStreet").Value.ToString();
+                            oRet.otherCorrelatedEntities.entityData.address.number = oRS.Fields.Item("deliveryNumber").Value.ToString();
+                            oRet.otherCorrelatedEntities.entityData.address.postalCode = oRS.Fields.Item("deliveryPostalCode").Value.ToString();
+                            oRet.otherCorrelatedEntities.entityData.address.city = oRS.Fields.Item("deliveryCity").Value.ToString();
+                        }
+                        else
+                        {
+                            oRet.otherCorrelatedEntitiesSpecified = false;
+                        }
+
+
                         if (string.IsNullOrEmpty(oRS.Fields.Item("currency").Value.ToString()) || oRS.Fields.Item("currency").Value.ToString().Equals("-112"))
                         {
                             oRet.currencySpecified = false;
@@ -2352,6 +2461,21 @@ namespace SAPmyDataService.BusinessLayer
                             CurrencyType enCur = (CurrencyType)Enum.Parse(typeof(CurrencyType), oRS.Fields.Item("currency").Value.ToString());
                             oRet.currencySpecified = true;
                             oRet.currency = enCur;
+                        }
+
+                        if (!string.IsNullOrEmpty(oRS.Fields.Item("isDeliveryNote").Value.ToString()) && !oRS.Fields.Item("isDeliveryNote").Value.ToString().Equals("-112"))
+                        {
+                            _oDocument.isDelivery = bool.Parse(oRS.Fields.Item("isDeliveryNote").Value.ToString());
+
+                            if (_oDocument.isDelivery == true && (_oDocument.ObjType.Equals("13") || _oDocument.ObjType.Equals("14")))
+                            {
+                                oRet.isDeliveryNote = _oDocument.isDelivery;
+                                oRet.isDeliveryNoteSpecified = true;
+                            }
+                            else
+                            {
+                                oRet.isDeliveryNoteSpecified = false;
+                            }
                         }
 
                         if (string.IsNullOrEmpty(oRS.Fields.Item("vatPaymentSuspension").Value.ToString()) || oRS.Fields.Item("vatPaymentSuspension").Value.ToString().Equals("-112"))
@@ -2427,6 +2551,16 @@ namespace SAPmyDataService.BusinessLayer
                             oRet.movePurpose = int.Parse(oRS.Fields.Item("movePurpose").Value.ToString());
                         }
 
+                        if (!string.IsNullOrEmpty(oRS.Fields.Item("otherMovePurposeTitle").Value.ToString()) && !oRS.Fields.Item("otherMovePurposeTitle").Value.ToString().Equals("-112"))
+                        {
+                            oRet.otherMovePurposeTitle = oRS.Fields.Item("otherMovePurposeTitle").Value.ToString();
+                            oRet.otherMovePurposeTitleSpecified = true;
+                        }
+                        else
+                        {
+                            oRet.otherMovePurposeTitleSpecified = false;
+                        }
+
                         if (!string.IsNullOrEmpty(oRS.Fields.Item("invoiceVariationType").Value.ToString()) && int.Parse(oRS.Fields.Item("invoiceVariationType").Value.ToString()) != -112)
                         {
                             oRet.invoiceVariationType = int.Parse(oRS.Fields.Item("invoiceVariationType").Value.ToString());
@@ -2448,6 +2582,33 @@ namespace SAPmyDataService.BusinessLayer
 
                         //}
                         #endregion
+
+                        #region Delivery Note
+                        if (_oDocument.isDelivery == true)
+                        {
+                            oRet.otherDeliveryNoteHeaderSpecified = true;
+                            oRet.otherDeliveryNoteHeader = new otherDeliveryNoteHeader();
+                            oRet.otherDeliveryNoteHeader.completeShippingBranch = int.Parse(oRS.Fields.Item("completeShippingBranch").Value.ToString());
+                            oRet.otherDeliveryNoteHeader.startShippingBranch = int.Parse(oRS.Fields.Item("startShippingBranch").Value.ToString());
+                            oRet.otherDeliveryNoteHeader.loadingAddress = new AddressType();
+                            oRet.otherDeliveryNoteHeader.loadingAddress.city = oRS.Fields.Item("loadingCity").Value.ToString();
+                            oRet.otherDeliveryNoteHeader.loadingAddress.street = oRS.Fields.Item("loadingStreet").Value.ToString();
+                            oRet.otherDeliveryNoteHeader.loadingAddress.number = oRS.Fields.Item("loadingNumber").Value.ToString();
+                            oRet.otherDeliveryNoteHeader.loadingAddress.postalCode = oRS.Fields.Item("loadingPostalCode").Value.ToString();
+                            oRet.otherDeliveryNoteHeader.deliveryAddress = new AddressType();
+                            oRet.otherDeliveryNoteHeader.deliveryAddress.city = oRS.Fields.Item("deliveryCity").Value.ToString();
+                            oRet.otherDeliveryNoteHeader.deliveryAddress.street = oRS.Fields.Item("deliveryStreet").Value.ToString();
+                            oRet.otherDeliveryNoteHeader.deliveryAddress.number = oRS.Fields.Item("deliveryNumber").Value.ToString();
+                            oRet.otherDeliveryNoteHeader.deliveryAddress.postalCode = oRS.Fields.Item("deliveryPostalCode").Value.ToString();
+
+                        }
+                        else
+                        {
+                            oRet.otherDeliveryNoteHeaderSpecified = false;
+                        }
+                        #endregion
+
+
                         //TODO
                         //List<long> correlatedInvoicesField;
                         oRS.MoveNext();

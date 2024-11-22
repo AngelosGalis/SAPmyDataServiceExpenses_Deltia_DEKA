@@ -70,6 +70,8 @@ public partial class AadeBookInvoiceType
     private TaxTotalsType[] taxesTotalsField;
 
     private InvoiceSummaryType invoiceSummaryField;
+    private otherTransportDetailsType otherTransportDetailsField;
+
 
     /// <remarks/>
     public string uid
@@ -244,6 +246,18 @@ public partial class AadeBookInvoiceType
             this.invoiceSummaryField = value;
         }
     }
+
+    public otherTransportDetailsType otherTransportDetails
+    {
+        get
+        {
+            return this.otherTransportDetailsField;
+        }
+        set
+        {
+            this.otherTransportDetailsField = value;
+        }
+    }
 }
 
 /// <remarks/>
@@ -330,6 +344,153 @@ public partial class PartyType
         }
     }
 }
+
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.aade.gr/myDATA/invoice/v1.0")]
+public partial class EntityType
+{
+
+    private int typeField;
+
+    private PartyType entityDataField;
+
+   
+
+    /// <remarks/>
+    public int type
+    {
+        get
+        {
+            return this.typeField;
+        }
+        set
+        {
+            this.typeField = value;
+        }
+    }
+
+    /// <remarks/>
+    public PartyType entityData
+    {
+        get
+        {
+            return this.entityDataField;
+        }
+        set
+        {
+            this.entityDataField = value;
+        }
+    }
+
+  
+}
+
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.aade.gr/myDATA/invoice/v1.0")]
+public partial class otherDeliveryNoteHeader
+{
+    private AddressType loadingAddressField;
+    private AddressType deliveryAddressField;
+
+    private int startShippingBranchField;
+    private int completeShippingBranchField;
+  
+
+    /// <remarks/>
+  
+   
+
+
+    /// <remarks/>
+    public AddressType loadingAddress
+    {
+        get
+        {
+            return this.loadingAddressField;
+        }
+        set
+        {
+            this.loadingAddressField = value;
+        }
+    }
+
+    /// <remarks/>
+    public AddressType deliveryAddress
+    {
+        get
+        {
+            return this.deliveryAddressField;
+        }
+        set
+        {
+            this.deliveryAddressField = value;
+        }
+    }
+
+    /// <remarks/>
+    public int startShippingBranch
+    {
+        get
+        {
+            return this.startShippingBranchField;
+        }
+        set
+        {
+            this.startShippingBranchField = value;
+        }
+    }
+
+    public int completeShippingBranch
+    {
+        get
+        {
+            return this.completeShippingBranchField;
+        }
+        set
+        {
+            this.completeShippingBranchField = value;
+        }
+    }
+
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://www.aade.gr/myDATA/invoice/v1.0")]
+public partial class otherTransportDetailsType
+{
+
+    private string vehicleNumberField;
+
+    /// <remarks/>
+    public string vehicleNumber
+    {
+        get
+        {
+            return this.vehicleNumberField;
+        }
+        set
+        {
+            this.vehicleNumberField = value;
+        }
+    }
+   
+}
+
+
 
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
@@ -1566,6 +1727,9 @@ public enum IncomeClassificationCategoryType
 
     /// <remarks/>
     category1_95,
+
+    category3,
+
 }
 
 /// <remarks/>
@@ -2329,6 +2493,15 @@ public partial class InvoiceRowType
 {
 
     private int lineNumberField;
+
+    private string itemCodeField;
+
+    private bool itemCodeFieldSpecified;
+
+    private string itemDescrField;
+
+    private bool itemDescrFieldSpecified;
+
     private int recTypeField;
 
     private bool recTypeFieldSpecified;
@@ -2438,6 +2611,60 @@ public partial class InvoiceRowType
         set
         {
             this.recTypeFieldSpecified = value;
+        }
+    }
+
+
+    public string itemCode
+    {
+        get
+        {
+            return this.itemCodeField;
+        }
+        set
+        {
+            this.itemCodeField = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool itemCodeSpecified
+    {
+        get
+        {
+            return this.itemCodeFieldSpecified;
+        }
+        set
+        {
+            this.itemCodeFieldSpecified = value;
+        }
+    }
+
+
+    public string itemDescr
+    {
+        get
+        {
+            return this.itemDescrField;
+        }
+        set
+        {
+            this.itemDescrField = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool itemDescrSpecified
+    {
+        get
+        {
+            return this.itemDescrFieldSpecified;
+        }
+        set
+        {
+            this.itemDescrFieldSpecified = value;
         }
     }
 
@@ -2989,6 +3216,10 @@ public partial class InvoiceHeaderType
 
     private bool vatPaymentSuspensionFieldSpecified;
 
+    private bool isDeliveryNoteField;
+
+    private bool isDeliveryNoteFieldSpecified;
+
     private CurrencyType currencyField;
 
     private bool currencyFieldSpecified;
@@ -3011,10 +3242,7 @@ public partial class InvoiceHeaderType
 
     private bool dispatchTimeFieldSpecified;
 
-
     private bool vehicleNumberFieldSpecified;
-
-    
 
     private string vehicleNumberField;
 
@@ -3022,10 +3250,20 @@ public partial class InvoiceHeaderType
 
     private bool movePurposeFieldSpecified;
 
+    private string otherMovePurposeTitleField;
+
+    private bool otherMovePurposeTitleFieldSpecified;
+
     private int invoiceVariationTypeField;
 
     private bool invoiceVariationTypeFieldSpecified;
 
+    private otherDeliveryNoteHeader otherDeliveryNoteHeaderField;
+
+    private bool otherDeliveryNoteHeaderFieldSpecified;
+
+    private EntityType otherCorrelatedEntitiesField;
+    private bool otherCorrelatedEntitiesFieldSpecified;
 
     /// <remarks/>
     public string series
@@ -3077,6 +3315,32 @@ public partial class InvoiceHeaderType
         set
         {
             this.invoiceTypeField = value;
+        }
+    }
+
+    public bool isDeliveryNote
+    {
+        get
+        {
+            return this.isDeliveryNoteField;
+        }
+        set
+        {
+            this.isDeliveryNoteField = value;
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool isDeliveryNoteSpecified
+    {
+        get
+        {
+            return this.isDeliveryNoteFieldSpecified;
+        }
+        set
+        {
+            this.isDeliveryNoteFieldSpecified = value;
         }
     }
 
@@ -3296,18 +3560,6 @@ public partial class InvoiceHeaderType
             this.movePurposeField = value;
         }
     }
-
-    public int invoiceVariationType
-    {
-        get
-        {
-            return this.invoiceVariationTypeField;
-        }
-        set
-        {
-            this.invoiceVariationTypeField = value;
-        }
-    }
     /// <remarks/>
     [System.Xml.Serialization.XmlIgnoreAttribute()]
     public bool movePurposeSpecified
@@ -3322,6 +3574,45 @@ public partial class InvoiceHeaderType
         }
     }
 
+    /// <remarks/>
+    public string otherMovePurposeTitle
+    {
+        get
+        {
+            return this.otherMovePurposeTitleField;
+        }
+        set
+        {
+            this.otherMovePurposeTitleField = value;
+        }
+    }
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool otherMovePurposeTitleSpecified
+    {
+        get
+        {
+            return this.otherMovePurposeTitleFieldSpecified;
+        }
+        set
+        {
+            this.otherMovePurposeTitleFieldSpecified = value;
+        }
+    }
+
+    public int invoiceVariationType
+    {
+        get
+        {
+            return this.invoiceVariationTypeField;
+        }
+        set
+        {
+            this.invoiceVariationTypeField = value;
+        }
+    }
+  
+
     [System.Xml.Serialization.XmlIgnoreAttribute()]
     public bool invoiceVariationTypeSpecified
     {
@@ -3332,6 +3623,58 @@ public partial class InvoiceHeaderType
         set
         {
             this.invoiceVariationTypeFieldSpecified = value;
+        }
+    }
+
+
+    public otherDeliveryNoteHeader otherDeliveryNoteHeader
+    {
+        get
+        {
+            return this.otherDeliveryNoteHeaderField;
+        }
+        set
+        {
+            this.otherDeliveryNoteHeaderField = value;
+        }
+    }
+
+
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool otherDeliveryNoteHeaderSpecified
+    {
+        get
+        {
+            return this.otherDeliveryNoteHeaderFieldSpecified;
+        }
+        set
+        {
+            this.otherDeliveryNoteHeaderFieldSpecified = value;
+        }
+    }
+
+    public EntityType otherCorrelatedEntities
+    {
+        get
+        {
+            return this.otherCorrelatedEntitiesField;
+        }
+        set
+        {
+            this.otherCorrelatedEntitiesField = value;
+        }
+    }
+
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool otherCorrelatedEntitiesSpecified
+    {
+        get
+        {
+            return this.otherCorrelatedEntitiesFieldSpecified;
+        }
+        set
+        {
+            this.otherCorrelatedEntitiesFieldSpecified = value;
         }
     }
 }
@@ -3424,6 +3767,11 @@ public enum InvoiceType
     [System.Xml.Serialization.XmlEnumAttribute("8.2")]
     Item82,
 
+    [System.Xml.Serialization.XmlEnumAttribute("9.1")]
+    Item91,
+
+    [System.Xml.Serialization.XmlEnumAttribute("9.3")]
+    Item93,
     /// <remarks/>
     [System.Xml.Serialization.XmlEnumAttribute("11.1")]
     Item111,
